@@ -49,6 +49,10 @@ export default {
             "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
           localStorage.setItem("role", response.data.role);
+          localStorage.setItem("userId", response.data.user_id);
+          localStorage.setItem("firstName", response.data.first_name);
+          localStorage.setItem("lastName", response.data.last_name);
+
           this.roleCheck();
         })
         .catch(error => {
