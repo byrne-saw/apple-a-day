@@ -74,7 +74,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  /*padding-bottom: 60px;*/
+  padding-bottom: 60px;
 }
 
 .apple {
@@ -83,7 +83,7 @@
 }
 
 .footer {
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100%;
     height: 60px;
