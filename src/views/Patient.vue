@@ -34,7 +34,7 @@
 
           <b-card title= "Five Recent Blood Pressure Logs">
              <b-table striped hover :items="bloodPressureLogs" :fields="fields"></b-table>
-             <b-button href="#"
+             <b-button href="#/bloodpressurelogsindex"
                         variant="success">All Blood Pressure Logs</b-button>
           </b-card>
         </b-card-group>
@@ -74,7 +74,9 @@ export default {
     addBloodPressureLog: function() {
       var params = {
         systolic: this.newBpLog.systolic,
-        diastolic: this.newBpLog.diastolic
+        diastolic: this.newBpLog.diastolic,
+        log_date: this.newBpLog.logDate,
+        log_time: this.newBpLog.logTime
       };
       axios
         .post("http://localhost:3000/api/blood_pressure_logs", params)
