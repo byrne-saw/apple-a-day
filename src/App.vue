@@ -51,11 +51,15 @@
       <div style="height: 20px"></div> 
     </div>
 
-    <router-view/>
+    <div class="apple">
+      <router-view/>
+    </div>
 
     <footer class="footer">
       <div class="container">
-        <span class="text-muted"> Copyright © 2018. Apple A Day by <a href="http://kingstudio.ro" target="_blank">AByrnesJaunt</a>. All Rights Reserved.
+        <span class="text-muted"> Copyright © 2018. Apple A Day by <a href="http://kingstudio.ro" target="_blank">AByrnesJaunt</a>. 
+        <div style="height: 0px"></div> 
+          All Rights Reserved.
         </span>
       </div>
     </footer>
@@ -70,14 +74,20 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  /*padding-bottom: 60px;*/
+}
+
+.apple {
+  margin-bottom: 60px;
+  
 }
 
 .footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     height: 60px;
-    line-height: 60px;
+    line-height: 30px;
     background-color: #f5f5f5;
 }
 </style>

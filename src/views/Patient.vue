@@ -1,16 +1,47 @@
 <template>
   <div class="patient">
-    <h1>Patient</h1>
-    
-    <div class="row">
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col">
-       <b-table striped hover :items="blood_pressure_logs" :fields="fields"></b-table>
-      </div>
+    <div class="container">
+      
+      <h1>{{ firstName }} {{ lastName }}'s Dashboard</h1>
+      
+      
+
+    <div>
+      <b-card-group deck>
+        <b-card title ="Add a Blood Pressure Log">
+          <form>
+              <b-form-input v-model="systolic"
+                                type="text"
+                                placeholder="Systolic"></b-form-input>
+              <br>
+              <b-form-input v-model="diastolic"
+                                type="text"
+                                placeholder="Diastolic"></b-form-input>
+              <br>
+              <b-form-input v-model="bpLogDate"
+                                type="date"
+                                placeholder=""></b-form-input>
+              <br>
+              <b-form-input v-model="bpLogTime"
+                                type="time"
+                                placeholder=""></b-form-input>
+              <br>                  
+              <button type="submit" class="btn btn-success my-1">Submit</button>
+
+          </form>
+        </b-card>
+
+        <b-card title= "5 Recent Blood Pressure Logs">
+           <b-table striped hover :items="bloodPressureLogs" :fields="fields"></b-table>
+           <b-button href="#"
+                      variant="success">All Blood Pressure Logs</b-button>
+        </b-card>
+      </b-card-group>
     </div>
 
 
+
+    </div>
   </div>
 </template>
 
@@ -22,8 +53,15 @@ var axios = require('axios');
 export default {
   data: function() {
     return {
-      fields: [ 'log_time', 'systolic', 'diastolic' ],
-      blood_pressure_logs: []
+      fields: ['log_time', 'systolic', 'diastolic'],
+      bloodPressureLogs: [],
+      firstName: localStorage.firstName,
+      lastName: localStorage.lastName,
+      systolic: "",
+      diastolic: "",
+      bpLogDate: "",
+      bpLogTime: ""
+
     };
   },
   created: function() {
@@ -34,10 +72,11 @@ export default {
         }
       })
       .then(response => {
-        this.blood_pressure_logs = response.data;
+        this.bloodPressureLogs = response.data;
       });
   },
   methods: {
+    
     
   },
   computed: {}
