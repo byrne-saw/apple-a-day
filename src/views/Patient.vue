@@ -6,7 +6,7 @@
             
       <div>
         <b-card-group deck>
-          <b-card title ="Add a Blood Pressure Log">
+          <b-card title="Add a Blood Pressure Log">
             <form v-on:submit.prevent="addBloodPressureLog()">
                 <b-form-input v-model="newBpLog.systolic"
                                   type="text"
