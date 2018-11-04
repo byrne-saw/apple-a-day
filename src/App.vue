@@ -19,14 +19,30 @@
         <b-collapse is-nav id="nav_collapse">
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
+            <b-nav-item href="#/">Home</b-nav-item>
+            <b-nav-item href="#/Logout">Logout</b-nav-item>
             <b-nav-item-dropdown right>
               <!-- Using button-content slot -->
               <template slot="button-content">
-                <em>User</em>
+                <em>Patient</em>
               </template>
               <b-dropdown-item href="#/Logout">Logout</b-dropdown-item>
             </b-nav-item-dropdown>
-            <b-nav-item href="#/Logout">Logout</b-nav-item>
+            <b-nav-item-dropdown right>
+              <!-- Using button-content slot -->
+              <template slot="button-content">
+                <em>Doctor</em>
+              </template>
+              <b-dropdown-item href="#/Logout">Logout</b-dropdown-item>
+            </b-nav-item-dropdown>
+            <b-nav-item-dropdown right>
+              <!-- Using button-content slot -->
+              <template slot="button-content">
+                <em>Admin</em>
+              </template>
+              <b-dropdown-item href="#/Logout">Logout</b-dropdown-item>
+            </b-nav-item-dropdown>
+
           </b-navbar-nav>
 
         </b-collapse>
