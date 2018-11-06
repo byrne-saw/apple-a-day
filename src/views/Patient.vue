@@ -18,7 +18,7 @@
                 <br>
                 <b-form-input v-model="newBpLog.logDate"
                                   type="date"
-                                  v-bind:value="currentDateTime.setDate"></b-form-input>
+                                  v-bind:value="currentDateTime.setDate"></b-form-input> 
                 <br>
                 <b-form-input v-model="newBpLog.logHourMin"
                                   type="time"
