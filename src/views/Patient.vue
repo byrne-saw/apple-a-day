@@ -20,7 +20,7 @@
                                   type="date"
                                   placeholder=""></b-form-input>
                 <br>
-                <b-form-input v-model="newBpLog.logTime"
+                <b-form-input v-model="newBpLog.logHourMin"
                                   type="time"
                                   placeholder=""></b-form-input>
                 <br>                  
@@ -63,7 +63,7 @@ export default {
         systolic: "", 
         diastolic: "",
         logDate: "",
-        logTime: ""
+        logHourMin: ""
       }
     };
   },
@@ -76,7 +76,7 @@ export default {
         systolic: this.newBpLog.systolic,
         diastolic: this.newBpLog.diastolic,
         log_date: this.newBpLog.logDate,
-        log_time: this.newBpLog.logTime
+        log_hour_min: this.newBpLog.logHourMin
       };
       axios
         .post("http://localhost:3000/api/blood_pressure_logs", params)
@@ -85,7 +85,7 @@ export default {
           this.newBpLog.systolic = "";
           this.newBpLog.diastolic = "";
           this.newBpLog.logDate = "";
-          this.newBpLog.logTime = "";
+          this.newBpLog.logHourMin = "";
           this.fiveRecentBP();
         })
         .catch(error => {
