@@ -18,11 +18,11 @@
                 <br>
                 <b-form-input v-model="newBpLog.logDate"
                                   type="date"
-                                  placeholder=""></b-form-input>
+                                  v-bind:value="currentDateTime.setDate"></b-form-input> 
                 <br>
-                <b-form-input v-model="newBpLog.logTime"
+                <b-form-input v-model="newBpLog.logHourMin"
                                   type="time"
-                                  placeholder=""></b-form-input>
+                                  v-bind:value="currentDateTime.setTime"></b-form-input>
                 <br>                  
                 <button type="submit" class="btn btn-success my-1">Add Blood Pressure Log</button>
                 <ul>
@@ -63,11 +63,22 @@ export default {
         systolic: "", 
         diastolic: "",
         logDate: "",
-        logTime: ""
+        logHourMin: ""
+      },
+      currentDateTime: {
+        today: "",
+        dd: "",
+        mm: "",
+        yyyy: "",
+        hh: "",
+        min: "",
+        setDate: "",
+        setTime: ""
       }
     };
   },
   created: function() {
+    this.setCurrentDateTime();
     this.fiveRecentBP();
   },
   methods: {
@@ -76,7 +87,7 @@ export default {
         systolic: this.newBpLog.systolic,
         diastolic: this.newBpLog.diastolic,
         log_date: this.newBpLog.logDate,
-        log_time: this.newBpLog.logTime
+        log_hour_min: this.newBpLog.logHourMin
       };
       axios
         .post("http://localhost:3000/api/blood_pressure_logs", params)
@@ -85,7 +96,7 @@ export default {
           this.newBpLog.systolic = "";
           this.newBpLog.diastolic = "";
           this.newBpLog.logDate = "";
-          this.newBpLog.logTime = "";
+          this.newBpLog.logHourMin = "";
           this.fiveRecentBP();
         })
         .catch(error => {
@@ -102,8 +113,31 @@ export default {
         .then(response => {
           this.bloodPressureLogs = response.data;
         });
+    },
+    setCurrentDateTime: function() {
+      this.currentDateTime.today = new Date();
+      this.currentDateTime.dd = this.currentDateTime.today.getDate();
+      this.currentDateTime.mm = this.currentDateTime.today.getMonth() + 1;
+      this.currentDateTime.yyyy = this.currentDateTime.today.getFullYear();
+      this.currentDateTime.hh = this.currentDateTime.today.getHours();
+      this.currentDateTime.min = this.currentDateTime.today.getMinutes();
+      if (this.currentDateTime.dd < 10) {
+        this.currentDateTime.dd = '0' + this.currentDateTime.dd;
+      }
+      if (this.currentDateTime.mm < 10) {
+        this.currentDateTime.mm = '0' + this.currentDateTime.mm;
+      }
+      if (this.currentDateTime.hh < 10) {
+        this.currentDateTime.hh = '0' + this.currentDateTime.hh;
+      }
+      if (this.currentDateTime.min < 10) {
+        this.currentDateTime.min = '0' + this.currentDateTime.min;
+      }
+      this.currentDateTime.setDate = this.currentDateTime.yyyy + '-' + this.currentDateTime.mm + '-' + this.currentDateTime.dd;
+      this.currentDateTime.setTime = this.currentDateTime.hh + ':' + this.currentDateTime.min;
+      this.newBpLog.logDate = this.currentDateTime.setDate;
+      this.newBpLog.logHourMin = this.currentDateTime.setTime;
     }
-    
   },
   computed: {}
 };
