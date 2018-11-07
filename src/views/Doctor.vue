@@ -8,44 +8,44 @@
         <!-- Modal Component -->
         <b-modal id="modal-center" hide-footer centered title="Create New Patient" v-model="modalShow">
           <form v-on:submit.prevent="addPatient()">
-              <div class="row">
-                <div class="col">
-                  <b-form-input v-model="newPatient.firstName"
-                                type="text"
-                                placeholder="First Name"></b-form-input>
-                </div>
-                <div class="col">
-                  <b-form-input v-model="newPatient.lastName"
-                                type="text"
-                                placeholder="Last Name"></b-form-input>
-                </div>
+            <div class="row">
+              <div class="col">
+                <b-form-input v-model="newPatient.firstName"
+                              type="text"
+                              placeholder="First Name"></b-form-input>
               </div>
-              <br>
-              <div class="row">
-                <div class="col">
-                  <b-form-input v-model="newPatient.phoneNumber"
-                                    type="tel"
-                                    placeholder="Phone Number"></b-form-input>
-                </div>
-                <div class="col">
-                  <b-form-input v-model="newPatient.email"
-                                    type="email"
-                                    placeholder="Email"></b-form-input>
-                </div>
+              <div class="col">
+                <b-form-input v-model="newPatient.lastName"
+                              type="text"
+                              placeholder="Last Name"></b-form-input>
               </div>
-              <br>
-              <b-form-input v-model="newPatient.password"
-                                type="password"
-                                placeholder="Password"></b-form-input>
-              <br>
-              <b-form-input v-model="newPatient.passwordConfirmation"
-                                type="password"
-                                placeholder="Password Confirmation"></b-form-input>
-              <br>
-              <b-btn type="submit" class="btn btn-success my-1">Create New Patient</b-btn>
-              <ul>
-                <li class="text-danger" v-for="error in errors">{{ error }}</li>
-              </ul>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col">
+                <b-form-input v-model="newPatient.phoneNumber"
+                                  type="tel"
+                                  placeholder="Phone Number"></b-form-input>
+              </div>
+              <div class="col">
+                <b-form-input v-model="newPatient.email"
+                                  type="email"
+                                  placeholder="Email"></b-form-input>
+              </div>
+            </div>
+            <br>
+            <b-form-input v-model="newPatient.password"
+                              type="password"
+                              placeholder="Password"></b-form-input>
+            <br>
+            <b-form-input v-model="newPatient.passwordConfirmation"
+                              type="password"
+                              placeholder="Password Confirmation"></b-form-input>
+            <br>
+            <b-btn type="submit" class="btn btn-success my-1">Create New Patient</b-btn>
+            <ul>
+              <li class="text-danger" v-for="error in errors">{{ error }}</li>
+            </ul>
           </form>
         </b-modal>
       </div>
@@ -53,8 +53,9 @@
       <div style="height: 20px"></div> 
       <div>
         <b-card>
-             <b-table striped hover :items="patients" :fields="fields"></b-table>
+           <b-table striped hover :items="patients" :fields="fields"></b-table>
         </b-card>
+        
       </div>
     </div>
   </div>
