@@ -4,47 +4,51 @@
       <h1>Dr.{{ lastName }}'s Dashboard</h1>
       
       <div>
-        <b-btn v-b-modal.modal-center variant="success">Create New Patient</b-btn>
-
+        <b-btn @click="modalShow = !modalShow" variant="success">Create New Patient</b-btn>
         <!-- Modal Component -->
-        <b-modal id="modal-center" hide-footer centered title="Create New Patient">
+        <b-modal id="modal-center" hide-footer centered title="Create New Patient" v-model="modalShow">
           <form v-on:submit.prevent="addPatient()">
-              <b-form-input v-model="newPatient.firstName"
+              <div class="row">
+                <div class="col">
+                  <b-form-input v-model="newPatient.firstName"
                                 type="text"
                                 placeholder="First Name"></b-form-input>
-              <br>
-              <b-form-input v-model="newPatient.lastName"
+                </div>
+                <div class="col">
+                  <b-form-input v-model="newPatient.lastName"
                                 type="text"
                                 placeholder="Last Name"></b-form-input>
+                </div>
+              </div>
               <br>
-              <b-form-input v-model="newPatient.phoneNumber"
-                                type="text"
-                                placeholder="Phone Number"></b-form-input>
-              <br>
-              <b-form-input v-model="newPatient.email"
-                                type="text"
-                                placeholder="Email"></b-form-input>
+              <div class="row">
+                <div class="col">
+                  <b-form-input v-model="newPatient.phoneNumber"
+                                    type="tel"
+                                    placeholder="Phone Number"></b-form-input>
+                </div>
+                <div class="col">
+                  <b-form-input v-model="newPatient.email"
+                                    type="email"
+                                    placeholder="Email"></b-form-input>
+                </div>
+              </div>
               <br>
               <b-form-input v-model="newPatient.password"
-                                type="text"
+                                type="password"
                                 placeholder="Password"></b-form-input>
               <br>
               <b-form-input v-model="newPatient.passwordConfirmation"
-                                type="text"
+                                type="password"
                                 placeholder="Password Confirmation"></b-form-input>
               <br>
-                           
-              <button type="submit" class="btn btn-success my-1">Create New Patient</button>
+              <b-btn type="submit" class="btn btn-success my-1">Create New Patient</b-btn>
               <ul>
                 <li class="text-danger" v-for="error in errors">{{ error }}</li>
               </ul>
-
           </form>
-
         </b-modal>
       </div>
-
-      
 
       <div style="height: 20px"></div> 
       <div>
@@ -77,8 +81,8 @@ export default {
         email: "",
         password: "",
         passwordConfirmation: ""
-      }
-
+      },
+      modalShow: false
     };
   },
   created: function() {
@@ -112,11 +116,12 @@ export default {
           this.newPatient.password = "";
           this.newPatient.passwordConfirmation = "";
           this.getPatients();
+          this.modalShow = !this.modalShow;
         })
         .catch(error => {
           this.errors = error.response.data.errors;
         });
-    }
+    },
   },
   computed: {}
 };
