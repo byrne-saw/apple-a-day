@@ -31,7 +31,6 @@
 
             </form>
           </b-card>
-
           <b-card title= "Five Recent Blood Pressure Logs">
              <b-table striped hover :items="bloodPressureLogs" :fields="fields"></b-table>
              <b-button href="#/bloodpressurelogsindex"
