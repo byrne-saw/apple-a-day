@@ -111,13 +111,15 @@ export default {
         { text: 'Doctor', value: 'doctor' },
         { text: 'Admin', value: 'admin' }
       ],
-      
+      doctorSelected: null,
+      doctorOptions: []
     };
   },
   created: function() {
     this.getPatients();
     this.getDoctors();
     this.getAdmins();
+    this.doctorsDropDown();
   },
   methods: {
     getPatients: function() {
@@ -145,13 +147,20 @@ export default {
 
     },
     addDoctor: function() {
-
+      // remember to refresh doctorsDropDown
     },
     addPatient: function() {
 
     }, 
     addWhichType: function() {
 
+    },
+    doctorsDropDown: function() {
+      axios
+        .get("http://localhost:3000/api/doctors_info_list")
+        .then(response => {
+          this.doctorOptions = response.data;
+        });
     }
   },
   computed: {}
