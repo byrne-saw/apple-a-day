@@ -14,11 +14,12 @@
                                       button-variant="outline-success"
                                       v-model="userType"
                                       :options="userTypeOptions"
-                                      name="radioBtnOutline" />
+                                      name="radioBtnOutline" 
+                                      @click.native="patientErrors = []"/>
             </b-form-group>
 
             <div v-if="userType === 'patient'">
-              <b-form-select v-model="doctorSelected" :options="doctorOptions" class="mb-3" />
+              <b-form-select @click.native="patientErrors = []" v-model="doctorSelected" :options="doctorOptions" class="mb-3" />
             </div>
 
             <div class="row">
@@ -58,6 +59,7 @@
             <b-btn type="submit" class="btn btn-success my-1">Create New Patient</b-btn>
             <ul>
               <li class="text-danger" v-for="error in errors">{{ error }}</li>
+              <li class="text-danger" v-for="error in patientErrors">{{ error }}</li>
             </ul>
           </form>
         </b-modal>
@@ -105,6 +107,7 @@ export default {
       },
       modalShow: false,
       errors: [],
+      patientErrors: [],
       userType: 'patient',
       userTypeOptions: [
         { text: 'Patient', value: 'patient' },
@@ -144,16 +147,96 @@ export default {
         });
     },
     addAdmin: function() {
-
+      var params = {
+        first_name: this.newUser.firstName,
+        last_name: this.newUser.lastName,
+        phone_number: this.newUser.phoneNumber,
+        email: this.newUser.email,
+        password: this.newUser.password,
+        password_confirmation: this.newUser.passwordConfirmation
+      };
+      axios
+        .post("http://localhost:3000/api/admins", params)
+        .then(cleanUp => {
+          this.errors = [];
+          this.newUser.firstName = "";
+          this.newUser.lastName = "";
+          this.newUser.phoneNumber = "";
+          this.newUser.email = "";
+          this.newUser.password = "";
+          this.newUser.passwordConfirmation = "";
+          this.getAdmins();
+          this.modalShow = !this.modalShow;
+        })
+        .catch(error => {
+          this.errors = error.response.data.errors;
+        });
     },
     addDoctor: function() {
-      // remember to refresh doctorsDropDown
+      var params = {
+        first_name: this.newUser.firstName,
+        last_name: this.newUser.lastName,
+        phone_number: this.newUser.phoneNumber,
+        email: this.newUser.email,
+        password: this.newUser.password,
+        password_confirmation: this.newUser.passwordConfirmation
+      };
+      axios
+        .post("http://localhost:3000/api/doctors", params)
+        .then(cleanUp => {
+          this.errors = [];
+          this.newUser.firstName = "";
+          this.newUser.lastName = "";
+          this.newUser.phoneNumber = "";
+          this.newUser.email = "";
+          this.newUser.password = "";
+          this.newUser.passwordConfirmation = "";
+          this.getDoctors();
+          this.modalShow = !this.modalShow;
+        })
+        .catch(error => {
+          this.errors = error.response.data.errors;
+        });
     },
     addPatient: function() {
-
+      var params = {
+        first_name: this.newUser.firstName,
+        last_name: this.newUser.lastName,
+        phone_number: this.newUser.phoneNumber,
+        email: this.newUser.email,
+        password: this.newUser.password,
+        password_confirmation: this.newUser.passwordConfirmation,
+        doctor_id: this.doctorSelected
+      };
+      axios
+        .post("http://localhost:3000/api/patients", params)
+        .then(cleanUp => {
+          this.errors = [];
+          this.newUser.firstName = "";
+          this.newUser.lastName = "";
+          this.newUser.phoneNumber = "";
+          this.newUser.email = "";
+          this.newUser.password = "";
+          this.newUser.passwordConfirmation = "";
+          this.getPatients();
+          this.modalShow = !this.modalShow;
+        })
+        .catch(error => {
+          this.errors = error.response.data.errors;
+        });
     }, 
     addWhichType: function() {
-
+      this.patientErrors = [];
+      if (this.userType === 'patient') {
+        if (this.doctorSelected === null) {
+          this.patientErrors.push("Please select a doctor"); //I want to break if this is true
+        }
+        this.addPatient();
+      } else if (this.userType === 'doctor') {
+        this.addDoctor();
+      } else if (this.userType === 'admin') {
+        this.addAdmin();
+      }
     },
     doctorsDropDown: function() {
       axios
