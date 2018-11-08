@@ -68,13 +68,13 @@
       <div style="height: 20px"></div> 
       <div>
         <b-card title="Admins">
-         <b-table striped hover :items="admins" :fields="fields"></b-table>
+         <b-table striped hover small outlined :items="admins" :fields="fields"></b-table>
         </b-card>
         <b-card title="Doctors">
-         <b-table striped hover :items="doctors" :fields="fields"></b-table>
+         <b-table striped hover small outlined :items="doctors" :fields="fields"></b-table>
         </b-card>
         <b-card title="Patients">
-         <b-table striped hover :items="patients" :fields="fieldsPatients"></b-table>
+         <b-table striped hover small outlined :items="patients" :fields="fieldsPatients"></b-table>
         </b-card>
       </div>
 

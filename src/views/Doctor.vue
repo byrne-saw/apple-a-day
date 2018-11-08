@@ -53,7 +53,7 @@
       <div style="height: 20px"></div> 
       <div>
         <b-card>
-           <b-table striped hover :items="patients" :fields="fields"></b-table>
+           <b-table striped hover small outlined :items="patients" :fields="fields"></b-table>
         </b-card>
         
       </div>
