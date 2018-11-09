@@ -7,7 +7,7 @@
       <div>
         <b-card-group deck>
           <b-card>
-            <b-table striped hover :items="bloodPressureLogs" :fields="fields"></b-table>
+            <b-table striped hover small outlined :items="bloodPressureLogs" :fields="fields"></b-table>
           </b-card>
         </b-card-group>
       </div>
