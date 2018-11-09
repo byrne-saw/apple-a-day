@@ -32,7 +32,7 @@
             </form>
           </b-card>
           <b-card title= "Five Recent Blood Pressure Logs">
-             <b-table striped hover outlined :items="bloodPressureLogs" :fields="fields"></b-table>
+             <b-table striped hover outlined v-on:row-clicked="printMessage()" :items="bloodPressureLogs" :fields="fields"></b-table>
              <b-button href="#/bloodpressurelogsindex"
                         variant="success">All Blood Pressure Logs</b-button>
           </b-card>
@@ -136,6 +136,9 @@ export default {
       this.currentDateTime.setTime = this.currentDateTime.hh + ':' + this.currentDateTime.min;
       this.newBpLog.logDate = this.currentDateTime.setDate;
       this.newBpLog.logHourMin = this.currentDateTime.setTime;
+    },
+    printMessage: function() {
+      console.log("That Worked")
     }
   },
   computed: {}
