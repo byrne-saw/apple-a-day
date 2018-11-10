@@ -14,6 +14,10 @@ library.add(faAppleAlt);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 // end fontawesome icon stuff
 
+// switch stuff
+import Switches from 'vue-switches';
+Vue.component('switches', Switches);
+
 Vue.use(BootstrapVue);
 
 var jwt = localStorage.getItem("jwt");

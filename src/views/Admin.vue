@@ -2,6 +2,37 @@
   <div class="admin">
     <div class="container">
       <h1>{{ firstName }} {{ lastName }}'s Admin Dashboard</h1>
+      
+      <div class="row">
+        <div class=col-4></div>
+        <div class="col">
+          <switches v-model="showAdmins"
+                text-enabled = "Show Admins:"
+                text-disabled = "Hide Admins:"
+                theme="bootstrap" 
+                color="success" 
+                type-bold="true"></switches>
+        </div>
+        <div class="col">
+          <switches v-model="showDoctors"
+                text-enabled = "Show Doctors:"
+                text-disabled = "Hide Doctors:"
+                theme="bootstrap" 
+                color="success" 
+                type-bold="true"></switches>
+        </div>
+        <div class="col">
+          <switches v-model="showPatients"
+                text-enabled = "Show Patients:"
+                text-disabled = "Hide Patients:"
+                theme="bootstrap" 
+                color="success" 
+                type-bold="true"></switches>
+        </div>
+        <div class=col-4></div>
+      </div>
+
+
 
       <div>
         <b-btn @click="modalShow = !modalShow" variant="success">Create New User</b-btn>
@@ -67,13 +98,13 @@
       
       <div style="height: 20px"></div> 
       <div>
-        <b-card title="Admins">
+        <b-card title="Admins" v-if="showAdmins">
          <b-table striped hover small outlined :items="admins" :fields="fields"></b-table>
         </b-card>
-        <b-card title="Doctors">
+        <b-card title="Doctors" v-if="showDoctors">
          <b-table striped hover small outlined :items="doctors" :fields="fields"></b-table>
         </b-card>
-        <b-card title="Patients">
+        <b-card title="Patients" v-if="showPatients">
          <b-table striped hover small outlined :items="patients" :fields="fieldsPatients"></b-table>
         </b-card>
       </div>
@@ -90,6 +121,9 @@ var axios = require('axios');
 export default {
   data: function() {
     return {
+      showAdmins: true,
+      showDoctors: true,
+      showPatients: true,
       firstName: localStorage.firstName,
       lastName: localStorage.lastName,
       fields: ['first_name', 'last_name', 'email', 'phone_number'],
