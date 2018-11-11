@@ -6,7 +6,7 @@
             
       <div>
         <b-card-group deck>
-          <b-card title="Add a Blood Pressure Log">
+          <b-card title="Add a Blood Pressure Reading">
             <form v-on:submit.prevent="addBloodPressureLog()">
                 <b-form-input v-model="newBpLog.systolic"
                                   type="text"
@@ -24,17 +24,17 @@
                                   type="time"
                                   v-bind:value="currentDateTime.setTime"></b-form-input>
                 <br>                  
-                <button type="submit" class="btn btn-success my-1">Add Blood Pressure Log</button>
+                <button type="submit" class="btn btn-success my-1">Add Blood Pressure Reading</button>
                 <ul>
                   <li class="text-danger" v-for="error in errors">{{ error }}</li>
                 </ul>
 
             </form>
           </b-card>
-          <b-card title= "Five Recent Blood Pressure Logs">
+          <b-card title= "Five Recent Blood Pressure Readings">
              <b-table striped hover outlined v-on:row-clicked="showModal($event)" :items="bloodPressureLogs" :fields="fields"></b-table>
              <b-button href="#/bloodpressurelogsindex"
-                        variant="success">All Blood Pressure Logs</b-button>
+                        variant="success">All Blood Pressure Readings</b-button>
           </b-card>
         </b-card-group>
       </div>
