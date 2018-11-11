@@ -47,7 +47,7 @@
       
       <div>
 
-        <b-modal id="modal-center" hide-footer centered title="Create New Patient" v-model="modalShow">
+        <b-modal id="modal-center" hide-footer centered title="Edit Blood Pressure Reading" v-model="modalShow">
           <h1>{{ bpLog }}</h1>
 
         </b-modal>
