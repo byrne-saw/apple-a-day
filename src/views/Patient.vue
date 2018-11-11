@@ -2,6 +2,12 @@
   <div class="patient">
     <div class="container">
       
+      <div v-if="alertShow">
+        <b-alert show dismissible variant="danger">
+          {{ alertMessage }}
+        </b-alert>
+      </div>
+
       <h1>{{ firstName }} {{ lastName }}'s Dashboard</h1>
             
       <div>
@@ -60,6 +66,8 @@ var axios = require('axios');
 export default {
   data: function() {
     return {
+      alertShow: false,
+      alertMessage: "",
       modalShow: false,
       bpLog: [],
       fields: ['log_time', 'systolic', 'diastolic'],
@@ -88,6 +96,7 @@ export default {
   created: function() {
     this.setCurrentDateTime();
     this.fiveRecentBP();
+    this.checkAlerts();
   },
   methods: {
     showModal: function(event) {
@@ -111,6 +120,7 @@ export default {
           this.newBpLog.logDate = "";
           this.newBpLog.logHourMin = "";
           this.fiveRecentBP();
+          this.checkAlerts();
         })
         .catch(error => {
           this.errors = error.response.data.errors;
@@ -125,6 +135,18 @@ export default {
         })
         .then(response => {
           this.bloodPressureLogs = response.data;
+        });
+    },
+    checkAlerts: function() {
+      axios
+        .get("http://localhost:3000/api/alert")
+        .then(response => {
+          this.alertMessage = response.data.message;
+          if (this.alertMessage !== "") {
+            this.alertShow = true;
+          } else {
+            this.alertShow = false;
+          }
         });
     },
     setCurrentDateTime: function() {
