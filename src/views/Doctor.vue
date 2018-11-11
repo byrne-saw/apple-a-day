@@ -60,7 +60,8 @@
 
       <div>
         <b-modal id="modal-center" hide-footer centered title="Patient Actions" v-model="modalShowPatientActions">
-          <b-form-group label="Actions:">
+          <h5>{{ clickedPatient.firstName }} {{ clickedPatient.lastName }}:</h5>  
+          <b-form-group>
                 <b-form-radio-group id="btnradios2"
                                     buttons
                                     button-variant="outline-success"
@@ -80,7 +81,38 @@
             </div>
           </form>
 
-
+          <form v-on:submit.prevent="updatePatient()" v-if="patientActions === 'edit'">
+            <div class="row">
+              <div class="col">
+                <b-form-input v-model="editPatient.firstName"
+                              type="text"
+                              v-bind:value="clickedPatient.firstName"></b-form-input>
+              </div>
+              <div class="col">
+                <b-form-input v-model="editPatient.lastName"
+                              type="text"
+                              v-bind:value="clickedPatient.lastName"></b-form-input>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col">
+                <b-form-input v-model="editPatient.phoneNumber"
+                                  type="tel"
+                                  v-bind:value="clickedPatient.phoneNumber"></b-form-input>
+              </div>
+              <div class="col">
+                <b-form-input v-model="editPatient.email"
+                                  type="email"
+                                  v-bind:value="clickedPatient.email"></b-form-input>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-8"></div>
+                <b-btn type="submit" class="btn btn-warning my-1">Update</b-btn>
+            </div>
+          </form>
 
         </b-modal>
       </div>
@@ -124,6 +156,13 @@ export default {
       patientActionErrors: [],
       patientMessage: "",
       clickedPatient: {
+        id: "",
+        firstName: "",
+        lastName: "",
+        phoneNumber: "",
+        email: ""
+      },
+      editPatient: {
         firstName: "",
         lastName: "",
         phoneNumber: "",
@@ -170,6 +209,7 @@ export default {
     },
     showModalPatientActions: function(event) {
       this.modalShowPatientActions = !this.modalShowPatientActions;
+      this.clickedPatient.id = event.id;
       this.clickedPatient.firstName = event.first_name;
       this.clickedPatient.lastName = event.last_name;
       this.clickedPatient.phoneNumber = event.phone_number;
@@ -185,14 +225,41 @@ export default {
       axios
         .post("http://localhost:3000/api/text", params)
         .then(cleanUp => {
+          this.clickedPatient.id = "";
           this.clickedPatient.firstName = "";
           this.clickedPatient.lastName = "";
           this.clickedPatient.phoneNumber = "";
           this.clickedPatient.email = "";
           this.patientMessage = "";
+          this.patientActions = 'message';
           this.modalShowPatientActions = !this.modalShowPatientActions;
         });
     },
+    updatePatient: function() {
+      var params = {
+        id: this.clickedPatient.id,
+        first_name: this.editPatient.firstName,
+        last_name: this.editPatient.lastName,
+        phone_number: this.editPatient.phoneNumber,
+        email: this.editPatient.email
+      };
+      axios
+        .patch("http://localhost:3000/api/patients/" + this.clickedPatient.id, params)
+        .then(cleanUp => {
+          this.clickedPatient.id = "";
+          this.clickedPatient.firstName = "";
+          this.clickedPatient.lastName = "";
+          this.clickedPatient.phoneNumber = "";
+          this.clickedPatient.email = "";
+          this.editPatient.firstName = "";
+          this.editPatient.lastName = "";
+          this.editPatient.phoneNumber = "";
+          this.editPatient.email = "";
+          this.getPatients();
+          this.patientActions = 'message';
+          this.modalShowPatientActions = !this.modalShowPatientActions;
+        });
+    }
 
   },
   computed: {}
