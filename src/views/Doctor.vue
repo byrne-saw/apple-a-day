@@ -295,7 +295,7 @@ export default {
     },
     sendPatientMessage: function() {
       var params = {
-        message: this.patientMessage,
+        message: this.patientMessage + " ~ Dr. " + this.firstName + " " + this.lastName,
         phone_number: this.clickedPatient.phoneNumber
       };
       axios
