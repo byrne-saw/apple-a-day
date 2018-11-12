@@ -47,7 +47,7 @@
       
       <div>
 
-        <b-modal id="modal-center" hide-footer centered title="Create New Patient" v-model="modalShow">
+        <b-modal id="modal-center" hide-footer centered title="Edit Blood Pressure Reading" v-model="modalShow">
           <h1>{{ bpLog }}</h1>
 
         </b-modal>
@@ -121,6 +121,7 @@ export default {
           this.newBpLog.logHourMin = "";
           this.fiveRecentBP();
           this.checkAlerts();
+          this.setCurrentDateTime();
         })
         .catch(error => {
           this.errors = error.response.data.errors;
