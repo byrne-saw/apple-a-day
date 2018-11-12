@@ -21,26 +21,27 @@
           <b-navbar-nav class="ml-auto">
             <b-nav-item href="#/">Home</b-nav-item>
             <b-nav-item href="#/Logout">Logout</b-nav-item>
-            <b-nav-item-dropdown right>
+            <b-nav-item-dropdown v-if="patient" right>
               <!-- Using button-content slot -->
               <template slot="button-content">
                 <em>Patient</em>
               </template>
               <b-dropdown-item href="#/Logout">Logout</b-dropdown-item>
             </b-nav-item-dropdown>
-            <b-nav-item-dropdown right>
+            <b-nav-item-dropdown v-if="doctor" right>
               <!-- Using button-content slot -->
               <template slot="button-content">
                 <em>Doctor</em>
               </template>
               <b-dropdown-item href="#/Logout">Logout</b-dropdown-item>
             </b-nav-item-dropdown>
-            <b-nav-item-dropdown right>
+            <b-nav-item-dropdown v-if="admin" right>
               <!-- Using button-content slot -->
               <template slot="button-content">
                 <em>Admin</em>
               </template>
               <b-dropdown-item href="#/Logout">Logout</b-dropdown-item>
+
             </b-nav-item-dropdown>
 
           </b-navbar-nav>
@@ -91,3 +92,34 @@
     background-color: #f5f5f5;
 }
 </style>
+
+<script>
+
+export default {
+  data: function() {
+    return {
+      admin: false, 
+      doctor: false,
+      patient: false
+    };
+  },
+  created: function() {
+    this.navCheck();
+  },
+  updated: function() {
+    this.navCheck();
+  },
+  methods: {
+    navCheck: function() {
+      if (localStorage.role === 'doctor') {
+        this.doctor = true;
+      } else if (localStorage.role === 'admin') {
+        this.admin = true;
+      } else if (localStorage.role === 'patient') {
+        this.patient = true;
+      }
+    }
+  },
+  computed: {}
+};
+</script>
