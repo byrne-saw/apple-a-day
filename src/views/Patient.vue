@@ -121,6 +121,7 @@ export default {
           this.newBpLog.logHourMin = "";
           this.fiveRecentBP();
           this.checkAlerts();
+          this.setCurrentDateTime();
         })
         .catch(error => {
           this.errors = error.response.data.errors;
