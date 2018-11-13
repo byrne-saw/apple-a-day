@@ -161,21 +161,21 @@ export default {
   methods: {
     getPatients: function() {
       axios
-        .get("http://localhost:3000/api/patients")
+        .get("/api/patients")
         .then(response => {
           this.patients = response.data;
         });
     },
     getDoctors: function() {
       axios
-        .get("http://localhost:3000/api/doctors")
+        .get("/api/doctors")
         .then(response => {
           this.doctors = response.data;
         });
     },
     getAdmins: function() {
       axios
-        .get("http://localhost:3000/api/admins")
+        .get("/api/admins")
         .then(response => {
           this.admins = response.data;
         });
@@ -190,7 +190,7 @@ export default {
         password_confirmation: this.newUser.passwordConfirmation
       };
       axios
-        .post("http://localhost:3000/api/admins", params)
+        .post("/api/admins", params)
         .then(cleanUp => {
           this.errors = [];
           this.newUser.firstName = "";
