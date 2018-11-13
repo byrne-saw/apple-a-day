@@ -43,9 +43,14 @@
                               placeholder="Password Confirmation"></b-form-input>
             <br>
             <b-btn type="submit" class="btn btn-success my-1">Create New Patient</b-btn>
-            <ul>
-              <li class="text-danger" v-for="error in errors">{{ error }}</li>
-            </ul>
+            <div class="row">
+              <div class="col"></div>  
+                <ul>
+                  <li class="text-danger" v-for="error in errors">{{ error }}</li>
+                </ul>
+              <div class="col"></div>  
+            </div>
+
           </form>
         </b-modal>
       </div>
@@ -145,9 +150,13 @@
               <br>
 
               <b-btn type="submit" class="btn btn-success my-1">Create New Notification</b-btn>
-              <ul>
-                <li class="text-danger" v-for="error in errors">{{ error }}</li>
-              </ul>
+              <div class="row">
+                <div class="col"></div>  
+                  <ul>
+                    <li class="text-danger" v-for="error in errors">{{ error }}</li>
+                  </ul>
+                <div class="col"></div>  
+              </div>
             </form>
           </div>
 

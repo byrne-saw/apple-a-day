@@ -31,9 +31,13 @@
                                   v-bind:value="currentDateTime.setTime"></b-form-input>
                 <br>                  
                 <button type="submit" class="btn btn-success my-1">Add Blood Pressure Reading</button>
-                <ul>
-                  <li class="text-danger" v-for="error in errors">{{ error }}</li>
-                </ul>
+                <div class="row">
+                  <div class="col"></div>  
+                    <ul>
+                      <li class="text-danger" v-for="error in errors">{{ error }}</li>
+                    </ul>
+                  <div class="col"></div>  
+                </div>
 
             </form>
           </b-card>

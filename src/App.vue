@@ -9,7 +9,7 @@
         <div>
           <!-- Image and text -->
           <b-navbar variant="faded" type="light">
-            <b-navbar-brand href="#">
+            <b-navbar-brand href="/">
               <font-awesome-icon icon="apple-alt" />
               A Day
             </b-navbar-brand>
@@ -26,7 +26,7 @@
               <template slot="button-content">
                 <em>Patient</em>
               </template>
-              <b-dropdown-item href="#/Logout">Logout</b-dropdown-item>
+              <b-dropdown-item href="#/bloodpressurelogsindex">Blood Pressure Readings</b-dropdown-item>
             </b-nav-item-dropdown>
             <b-nav-item-dropdown v-if="doctor" right>
               <!-- Using button-content slot -->
@@ -58,7 +58,7 @@
 
     <footer class="footer">
       <div class="container">
-        <span class="text-muted"> Copyright © 2018. Apple A Day by <a href="http://kingstudio.ro" target="_blank">AByrnesJaunt</a>. 
+        <span class="text-muted"> Copyright © 2018. <font-awesome-icon icon="apple-alt" /> A Day by <a href="https://www.linkedin.com/in/byrne-saw/" target="_blank">AByrnesJaunt</a>. 
         <div style="height: 0px"></div> 
           All Rights Reserved.
         </span>

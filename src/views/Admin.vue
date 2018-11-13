@@ -4,7 +4,7 @@
       <h1>{{ firstName }} {{ lastName }}'s Admin Dashboard</h1>
       
       <div class="row">
-        <div class=col-4></div>
+        <div class=col></div>
         <div class="col">
           <switches v-model="showAdmins"
                 text-enabled = "Show Admins:"
@@ -29,8 +29,10 @@
                 color="success" 
                 type-bold="true"></switches>
         </div>
-        <div class=col-4></div>
+        <div class=col></div>
       </div>
+      <div style="height: 20px"></div> 
+      
 
 
 
@@ -88,10 +90,14 @@
                               placeholder="Password Confirmation"></b-form-input>
             <br>
             <b-btn type="submit" class="btn btn-success my-1">Create New Patient</b-btn>
-            <ul>
-              <li class="text-danger" v-for="error in errors">{{ error }}</li>
-              <li class="text-danger" v-for="error in patientErrors">{{ error }}</li>
-            </ul>
+            <div class="row">
+              <div class="col"></div>  
+                <ul>
+                  <li class="text-danger" v-for="error in errors">{{ error }}</li>
+                  <li class="text-danger" v-for="error in patientErrors">{{ error }}</li>
+                </ul>
+              <div class="col"></div>  
+            </div>
           </form>
         </b-modal>
       </div>
