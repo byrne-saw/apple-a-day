@@ -58,7 +58,7 @@
 
     <footer class="footer">
       <div class="container">
-        <span class="text-muted"> Copyright © 2018. <font-awesome-icon icon="apple-alt" /> A Day by <a href="https://www.linkedin.com/in/byrne-saw/" target="_blank">AByrnesJaunt</a>. 
+        <span class="text-muted"> Copyright © 2018. <font-awesome-icon icon="apple-alt" color="#28A745"/> A Day by <a href="https://www.linkedin.com/in/byrne-saw/" target="_blank">AByrnesJaunt</a>. 
         <div style="height: 0px"></div> 
           All Rights Reserved.
         </span>

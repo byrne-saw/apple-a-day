@@ -4,7 +4,7 @@
       <b-modal id="modal-center" hide-footer centered hide-header no-close-on-esc no-close-on-backdrop  visible size="lg">
         <font size=6>
           
-        <font-awesome-icon icon="apple-alt" />
+        <font-awesome-icon icon="apple-alt" color="#28A745" />
         A Day
         </font>
           <form v-on:submit.prevent="submit()">

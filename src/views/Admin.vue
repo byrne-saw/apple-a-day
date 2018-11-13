@@ -314,6 +314,11 @@ export default {
         notifyTypeOptions: [
           { value: 'Blood Pressure', text: 'Blood Pressure' }
         ],
+        interval: "24",
+        intervalOptions: [
+          { value: '24', text: 'Daily' },
+          { value: '168', text: 'Weekly' }
+        ], 
         smsText: false, 
         textAt: "9",
         textAtOptions: [
