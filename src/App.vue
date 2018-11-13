@@ -19,7 +19,7 @@
         <b-collapse is-nav id="nav_collapse">
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-nav-item href="#/">Home</b-nav-item>
+            <b-nav-item  href="#/">Home</b-nav-item>
             <b-nav-item href="#/Logout">Logout</b-nav-item>
             <b-nav-item-dropdown v-if="patient" right>
               <!-- Using button-content slot -->
@@ -70,7 +70,7 @@
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Courier', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -91,6 +91,11 @@
     line-height: 30px;
     background-color: #f5f5f5;
 }
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 1) !important;
+
+}
 </style>
 
 <script>
@@ -100,7 +105,7 @@ export default {
     return {
       admin: false, 
       doctor: false,
-      patient: false
+      patient: false,
     };
   },
   created: function() {
