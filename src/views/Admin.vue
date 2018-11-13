@@ -490,9 +490,14 @@ export default {
       this.userActions = 'message';
     },
     sendPatientMessage: function() {
+      if (this.patientSet === true) {
+        this.patientMessage = this.patientMessage + " ~ Dr. " + this.firstName + " " + this.lastName;
+      } else {
+        this.patientMessage = this.patientMessage + " ~  " + this.firstName + " " + this.lastName;
+      }
       var params = {
-        message: this.patientMessage + " ~ Dr. " + this.firstName + " " + this.lastName,
-        phone_number: this.clickedPatient.phoneNumber
+        phone_number: this.clickedPatient.phoneNumber,
+        message: this.patientMessage
       };
       axios
         .post("/api/text", params)
