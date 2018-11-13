@@ -14,7 +14,7 @@ export default {
     localStorage.removeItem("userId");
     localStorage.removeItem("firstName");
     localStorage.removeItem("lastName");
-    this.$router.push("/");
+    window.location.href = "/";
   }
 };
 </script>
