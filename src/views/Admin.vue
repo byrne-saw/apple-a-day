@@ -216,7 +216,7 @@ export default {
         password_confirmation: this.newUser.passwordConfirmation
       };
       axios
-        .post("http://localhost:3000/api/doctors", params)
+        .post("/api/doctors", params)
         .then(cleanUp => {
           this.errors = [];
           this.newUser.firstName = "";
@@ -243,7 +243,7 @@ export default {
         doctor_id: this.doctorSelected
       };
       axios
-        .post("http://localhost:3000/api/patients", params)
+        .post("/api/patients", params)
         .then(cleanUp => {
           this.errors = [];
           this.newUser.firstName = "";
@@ -274,7 +274,7 @@ export default {
     },
     doctorsDropDown: function() {
       axios
-        .get("http://localhost:3000/api/doctors_info_list")
+        .get("/api/doctors_info_list")
         .then(response => {
           this.doctorOptions = response.data;
         });

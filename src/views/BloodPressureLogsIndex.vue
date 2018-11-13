@@ -32,7 +32,7 @@ export default {
   },
   created: function() {
     axios
-      .get('http://localhost:3000/api/blood_pressure_logs')
+      .get('/api/blood_pressure_logs')
       .then(response => {
         this.bloodPressureLogs = response.data;
       });

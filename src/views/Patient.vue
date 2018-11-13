@@ -112,7 +112,7 @@ export default {
         log_hour_min: this.newBpLog.logHourMin
       };
       axios
-        .post("http://localhost:3000/api/blood_pressure_logs", params)
+        .post("/api/blood_pressure_logs", params)
         .then(cleanUp => {
           this.errors = [];
           this.newBpLog.systolic = "";
@@ -129,7 +129,7 @@ export default {
     },
     fiveRecentBP: function() {
       axios
-        .get("http://localhost:3000/api/blood_pressure_logs/recent", {
+        .get("/api/blood_pressure_logs/recent", {
           params: {
             patient_id: null
           }
@@ -140,7 +140,7 @@ export default {
     },
     checkAlerts: function() {
       axios
-        .get("http://localhost:3000/api/alert")
+        .get("/api/alert")
         .then(response => {
           this.alertMessage = response.data.message;
           if (this.alertMessage !== "") {

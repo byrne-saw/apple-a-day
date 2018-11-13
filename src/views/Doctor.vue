@@ -253,7 +253,7 @@ export default {
   methods: {
     getPatients: function() {
       axios
-        .get("http://localhost:3000/api/patients")
+        .get("/api/patients")
         .then(response => {
           this.patients = response.data;
         });
@@ -268,7 +268,7 @@ export default {
         password_confirmation: this.newPatient.passwordConfirmation
       };
       axios
-        .post("http://localhost:3000/api/patients", params)
+        .post("/api/patients", params)
         .then(cleanUp => {
           this.errors = [];
           this.newPatient.firstName = "";
@@ -299,7 +299,7 @@ export default {
         phone_number: this.clickedPatient.phoneNumber
       };
       axios
-        .post("http://localhost:3000/api/text", params)
+        .post("/api/text", params)
         .then(cleanUp => {
           this.clickedPatient.id = "";
           this.clickedPatient.firstName = "";
@@ -319,7 +319,7 @@ export default {
         email: this.editPatient.email
       };
       axios
-        .patch("http://localhost:3000/api/patients/" + this.clickedPatient.id, params)
+        .patch("/api/patients/" + this.clickedPatient.id, params)
         .then(cleanUp => {
           this.clickedPatient.id = "";
           this.clickedPatient.firstName = "";
@@ -339,7 +339,7 @@ export default {
         id: this.clickedPatient.id
       };
       axios
-        .delete("http://localhost:3000/api/patients/" + this.clickedPatient.id, params)
+        .delete("/api/patients/" + this.clickedPatient.id, params)
         .then(cleanUp => {
           this.clickedPatient.id = "";
           this.clickedPatient.firstName = "";
@@ -359,7 +359,7 @@ export default {
         text_at: this.newNotification.textAt
       };
       axios
-        .post("http://localhost:3000/api/notifications", params)
+        .post("/api/notifications", params)
         .then(cleanUp => {
           this.clickedPatient.id = "";
           this.clickedPatient.firstName = "";
