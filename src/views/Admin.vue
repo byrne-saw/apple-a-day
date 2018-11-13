@@ -495,11 +495,13 @@ export default {
       this.userActions = 'message';
     },
     sendPatientMessage: function() {
-      if (this.patientSet === true) {
-        this.patientMessage = this.patientMessage + " ~ Dr. " + this.firstName + " " + this.lastName;
-      } else {
-        this.patientMessage = this.patientMessage + " ~  " + this.firstName + " " + this.lastName;
-      }
+      // if (this.patientSet === true) {
+      //   this.patientMessage = this.patientMessage + " ~ Dr. " + this.firstName + " " + this.lastName;
+      // } else {
+      //   this.patientMessage = this.patientMessage + " ~  " + this.firstName + " " + this.lastName;
+      // }
+      this.patientMessage = this.patientMessage + " ~  " + this.firstName + " " + this.lastName;
+      
       var params = {
         phone_number: this.clickedPatient.phoneNumber,
         message: this.patientMessage
