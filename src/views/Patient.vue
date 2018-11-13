@@ -52,7 +52,6 @@
       </div>
       
       <div>
-
         <b-modal id="modal-center" hide-footer centered title="Edit Blood Pressure Reading" v-model="modalShow">
             <b-form-group>
                 <b-form-radio-group id="btnradios2"
@@ -156,7 +155,7 @@ export default {
       updateDeleteOptions: [
         { text: 'Update', value: 'update' },
         { text: 'Delete', value: 'delete' },
-      ],
+      ]
 
     };
   },
@@ -167,6 +166,7 @@ export default {
   },
   methods: {
     showModalBpLog: function(event) {
+      this.setCurrentDateTime();
       this.modalShow = !this.modalShow;
       this.updateDelete = "";
       this.updateDelete = "update";
