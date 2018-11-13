@@ -105,7 +105,7 @@ export default {
     return {
       admin: false, 
       doctor: false,
-      patient: false
+      patient: false,
     };
   },
   created: function() {
