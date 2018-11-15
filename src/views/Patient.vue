@@ -44,7 +44,7 @@
             </form>
           </b-card>
           <b-card title= "Five Recent Blood Pressure Readings">
-             <b-table striped hover outlined v-on:row-clicked="showModalBpLog($event)" :items="bloodPressureLogs" :fields="fields"></b-table>
+             <b-table striped hover outlined responsive v-on:row-clicked="showModalBpLog($event)" :items="bloodPressureLogs" :fields="fields"></b-table>
              <b-button href="#/bloodpressurelogsindex"
                         variant="success">All Blood Pressure Readings</b-button>
           </b-card>

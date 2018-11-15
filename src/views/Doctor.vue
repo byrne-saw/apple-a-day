@@ -58,7 +58,7 @@
       <div style="height: 20px"></div> 
       <div>
         <b-card>
-           <b-table striped hover small outlined v-on:row-clicked="showModalPatientActions($event)" :items="patients" :fields="fields"></b-table>
+           <b-table striped hover small outlined responsive v-on:row-clicked="showModalPatientActions($event)" :items="patients" :fields="fields"></b-table>
         </b-card>
         
       </div>

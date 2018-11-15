@@ -7,7 +7,7 @@
       <div>
         <b-card-group deck>
           <b-card>
-            <b-table striped hover small outlined v-on:row-clicked="showModalBpLog($event)" :items="bloodPressureLogs" :fields="fields"></b-table>
+            <b-table striped hover small outlined responsive v-on:row-clicked="showModalBpLog($event)" :items="bloodPressureLogs" :fields="fields"></b-table>
           </b-card>
         </b-card-group>
       </div>

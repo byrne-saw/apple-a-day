@@ -105,13 +105,13 @@
       <div style="height: 20px"></div> 
       <div>
         <b-card title="Admins" v-if="showAdmins">
-         <b-table striped hover small outlined v-on:row-clicked="showModalPatientActions($event), setUser(), clearPatient()" :items="admins" :fields="fields"></b-table>
+         <b-table striped hover small outlined responsive v-on:row-clicked="showModalPatientActions($event), setUser(), clearPatient()" :items="admins" :fields="fields"></b-table>
         </b-card>
         <b-card title="Doctors" v-if="showDoctors">
-         <b-table striped hover small outlined v-on:row-clicked="showModalPatientActions($event), setUser(), clearPatient()" :items="doctors" :fields="fields"></b-table>
+         <b-table striped hover small outlined responsive v-on:row-clicked="showModalPatientActions($event), setUser(), clearPatient()" :items="doctors" :fields="fields"></b-table>
         </b-card>
         <b-card title="Patients" v-if="showPatients">
-         <b-table striped hover small outlined v-on:row-clicked="showModalPatientActions($event), setPatient(), clearUser()" :items="patients" :fields="fieldsPatients"></b-table>
+         <b-table striped hover small outlined responsive v-on:row-clicked="showModalPatientActions($event), setPatient(), clearUser()" :items="patients" :fields="fieldsPatients"></b-table>
         </b-card>
       </div>
 
