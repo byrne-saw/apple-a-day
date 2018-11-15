@@ -113,11 +113,7 @@ export default {
   },
   created: function() {
     this.setCurrentDateTime();
-    axios
-      .get('/api/blood_pressure_logs')
-      .then(response => {
-        this.bloodPressureLogs = response.data;
-      });
+    this.getBloodPressureLogs();
   },
   methods: {
     showModalBpLog: function(event) {
@@ -149,6 +145,7 @@ export default {
           this.editBpLog.diastolic = "";
           this.editBpLog.logDate = "";
           this.editBpLog.logHourMinog = "";
+          this.getBloodPressureLogs();
           this.modalShow = !this.modalShow;
         })
         .catch(error => {
@@ -167,6 +164,7 @@ export default {
           this.clickedBpLog.diastolic = "";
           this.clickedBpLog.logDate = "";
           this.clickedBpLog.logHourMinog = "";
+          this.getBloodPressureLogs();
           this.modalShow = !this.modalShow;
         });
     },
@@ -194,6 +192,13 @@ export default {
 
       this.editBpLog.logDate = this.currentDateTime.setDate;
       this.editBpLog.logHourMin = this.editBpLog.setTime;
+    }, 
+    getBloodPressureLogs: function() {
+      axios
+        .get('/api/blood_pressure_logs')
+        .then(response => {
+          this.bloodPressureLogs = response.data;
+        });
     }    
   },
   computed: {}
