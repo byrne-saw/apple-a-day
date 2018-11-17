@@ -25,8 +25,10 @@
             </div>
             <input type="submit" class="btn btn-success" value="Login">
           </form>
+          <div style="height: 10px"></div> 
+          <a href="https://www.linkedin.com/in/byrne-saw/" target="_blank">AByrnesJaunt</a>
         </b-modal>
-        </div>
+      </div>
   </div>
 </template>
 
